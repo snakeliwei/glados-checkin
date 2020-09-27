@@ -9,13 +9,16 @@ sckey = os.environ["SCKEY"]
 # 填入glados账号对应cookie
 cookie = os.environ["COOKIE"]
 
+# user-agent
+uagent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
+
 
 def start():    
     url= "https://glados.rocks/api/user/checkin"
     url2= "https://glados.rocks/api/user/status"
     referer = 'https://glados.rocks/console/checkin'
-    checkin = requests.post(url,headers={'cookie': cookie ,'referer': referer })
-    state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer})
+    checkin = requests.post(url,headers={'user-agent': uagent,'cookie': cookie ,'referer': referer })
+    state =  requests.get(url2,headers={'user-agent': uagent,'cookie': cookie ,'referer': referer})
 
     if 'message' in checkin.text:
         mess = checkin.json()['message']
