@@ -17,7 +17,7 @@ def start():
     url= "https://glados.rocks/api/user/checkin"
     url2= "https://glados.rocks/api/user/status"
     referer = 'https://glados.rocks/console/checkin'
-    checkin = requests.post(url,headers={'user-agent': uagent,'cookie': cookie ,'referer': referer })
+    checkin = requests.post(url,headers={'user-agent': uagent,'cookie': cookie ,'referer': referer}, data={'token':'glados_network'})
     state =  requests.get(url2,headers={'user-agent': uagent,'cookie': cookie ,'referer': referer})
 
     if 'message' in checkin.text:
